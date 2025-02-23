@@ -36,8 +36,7 @@
                         <a class="nav-link" href="#">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.html"><i class="fas fa-shopping-cart active" style="color:#212529 
-"></i></a>
+                        <a href="cart.html"><i class="fas fa-shopping-cart" style="color:#212529"></i></a>
 
                         <i class="fas fa-user"></i>
                     </li>
@@ -45,106 +44,34 @@
             </div>
         </div>
     </nav>
-    <section class="cart my-5 py-5 container">
-        <div class="container mt-5">
-            <h2 class="font-weight-bold">Your Cart</h2>
-            <hr>
+    <!-- Login -->
+    <section class="my-5 py-5">
+        <div class="container text-center mt-3 pt-5">
+            <h2 class="font-weight-bold">Login</h2>
+            <hr class="mx-auto">
         </div>
-        <table class="mt-5 pt-5">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="assets/imgs/9.jpg" alt="" class="img-fluid">
-                            <div>
-                                <p>White T-Shirt</p>
-                                <small><span>$</span>50</small>
-                                <br>
-                                <button href="#">Remove</button>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <input type="number" value="1">
-                        <button class="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                        <span>$</span>
-                        <span class="product-price">50</span>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="assets/imgs/9.jpg" alt="" class="img-fluid">
-                            <div>
-                                <p>White T-Shirt</p>
-                                <small><span>$</span>50</small>
-                                <br>
-                                <button href="#">Remove</button>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <input type="number" value="1">
-                        <button class="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                        <span>$</span>
-                        <span class="product-price">50</span>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="assets/imgs/9.jpg" alt="" class="img-fluid">
-                            <div>
-                                <p>White T-Shirt</p>
-                                <small><span>$</span>50</small>
-                                <br>
-                                <button href="#">Remove</button>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <input type="number" value="1">
-                        <button class="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                        <span>$</span>
-                        <span class="product-price">50</span>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="total-price">
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td>$300</td>
-                </tr>
-                <tr>
-                    <td>Tax</td>
-                    <td>$40</td>
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td>$340</td>
-                </tr>
-            </table>
-        </div>
-        <div class="checkout-div">
-            <button class="checkout-btn">Checkout</button>
+        <div class="container mx-auto">
+            <form id="login-form">
+                <div class="mb-3 form-group">
+                    <label for="InputEmail1" class="form-label">Email address</label>
+                    <input name="email" type="email" class="form-control" id="InputEmail1" required>
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="InputPassword" class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" id="InputPassword" required>
+                </div>
+                <div class="mb-3 form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="Check">
+                    <label name="button" class="form-check-label" for="Check">Remember me</label>
+                </div>
+                <div class="mb-3 form-group">
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+                <div class="form-group">
+                    <span class="fw-light pe-1">Don’t have an account?</span><a href="register.html" class="btn p-0">
+                        Register</a>
+                </div>
+            </form>
         </div>
     </section>
     <!-- Footer -->
@@ -178,7 +105,7 @@
                 </div>
                 <div>
                     <h6 class="text-uppercase">Email</h6>
-                    <p>2nVtZ@example.com</p>
+                    <p>2nVtZ@.com</p>
                 </div>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">

@@ -430,16 +430,41 @@ footer {
 }
 
 
-/* Login */
+/* Login, Register */
 
-#login-form{
-  width: 50%;
+#login-form,#register-form{
+  width: 40%;
     margin: 5px auto;
     padding: 20px;
+    input::placeholder{
+      font-weight: 300;
+    }
     .form-group:last-child{
       line-height: 1.6;
     }
   .submit-btn{
     width: 100%;
+  }
+}
+
+.form-control{
+  padding:.6rem .75rem;
+}
+
+/* Account */
+
+.account-info{
+  form{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .input-info{
+      width: 49%;
+      & input:focus{
+        outline: none;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        box-shadow: none;
+      }
+    }
   }
 }

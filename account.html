@@ -37,7 +37,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="cart.html"><i class="fas fa-shopping-cart" style="color:#212529"></i></a>
-                        <a href="account.html"><i class="fas fa-user" style="color:#212529"></i></a>
+                        <a href="account.html"><i class="fas fa-user active" style="color:#212529"></i></a>
 
                     </li>
                 </ul>
@@ -46,34 +46,37 @@
     </nav>
     <!-- Login -->
     <section class="my-5 py-5">
-        <div class="container text-center mt-3 pt-5">
-            <h2 class="font-weight-bold">Login</h2>
-            <hr class="mx-auto">
-        </div>
-        <div class="container mx-auto">
-            <form id="login-form">
-                <div class="mb-3 form-group">
-                    <label for="InputEmail1" class="form-label">Email address</label>
-                    <input name="email" type="email" class="form-control" id="InputEmail1"
-                        placeholder="Enter your email" required>
+        <div class="container row mx-auto">
+            <div class="text-start col-lg-12 col-md-12 col-sm-12 pt-5 mt-3">
+
+                <h3 class="font-weight-bold mb-4">Account Details</h3>
+                <div class="account-info">
+                    <form action="" id="account">
+                        <div class="input-info mb-3">
+                            <label for="Name" class="form-label">First Name</label>
+                            <input name="name" type="text" class="form-control" id="Name" value="Suhail" required>
+                        </div>
+                        <div class="input-info mb-3">
+                            <label for="LastName" class="form-label">Last Name</label>
+                            <input name="LastName" type="text" class="form-control" id="LastName" value="Ahmed"
+                                required>
+                        </div>
+                        <div class="input-info mb-3">
+                            <label for="Email" class="form-label">Email</label>
+                            <input name="name" type="text" class="form-control" id="Email" value="Suhail@gmail.com"
+                                required>
+                        </div>
+                        <div class="input-info mb-3">
+                            <label for="Password" class="form-label">Password</label>
+                            <input name="Password" type="text" class="form-control" id="Password" value="5478f5#jh"
+                                required>
+                        </div>
+                        <div class="mb-3 mt-3 form-group">
+                            <button type="submit" class="submit-btn">Update</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="mb-3 form-group">
-                    <label for="InputPassword" class="form-label">Password</label>
-                    <input name="password" type="password" class="form-control" id="InputPassword"
-                        placeholder="Enter your password" required>
-                </div>
-                <div class="mb-3 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="Check">
-                    <label name="button" class="form-check-label" for="Check">Remember me</label>
-                </div>
-                <div class="mb-3 form-group">
-                    <button type="submit" class="submit-btn">Submit</button>
-                </div>
-                <div class="form-group">
-                    <span class="fw-light pe-1">Don’t have an account?</span><a href="register.html" class="btn p-0">
-                        Register</a>
-                </div>
-            </form>
+            </div>
         </div>
     </section>
     <!-- Footer -->

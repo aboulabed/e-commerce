@@ -468,3 +468,47 @@ footer {
     }
   }
 }
+/* Checkout */
+
+.checkout{
+  form{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .input-info{
+      input{
+
+        max-width: 98%;
+      }
+      & input:focus{
+        outline: none;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        box-shadow: none;
+      }
+    }
+  }
+}
+/* Contact */
+
+.contact-us{
+  form{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .input-info{
+      textarea{
+        resize: none;
+        height: 150px;
+        max-width: 99%;
+      }
+      input{
+        max-width: 98%;
+      }
+      & input:focus,textarea:focus{
+        outline: none;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        box-shadow: none;
+      }
+    }
+  }
+}

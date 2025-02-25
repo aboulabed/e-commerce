@@ -34,115 +34,57 @@
                         <a class="nav-link" href="contact-us.html">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.html"><i class="fas fa-shopping-cart active" style="color:#212529 
-"></i></a>
-
+                        <a href="cart.html"><i class="fas fa-shopping-cart" style="color:#212529"></i></a>
                         <a href="account.html"><i class="fas fa-user" style="color:#212529"></i></a>
+
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <section class="cart my-5 py-5 container">
-        <div class="container mt-5">
-            <h2 class="font-weight-bold">Your Cart</h2>
-            <hr>
-        </div>
-        <table class="mt-5 pt-5">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="assets/imgs/9.jpg" alt="" class="img-fluid">
-                            <div>
-                                <p>White T-Shirt</p>
-                                <small><span>$</span>50</small>
-                                <br>
-                                <button href="#">Remove</button>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <input type="number" value="1">
-                        <button class="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                        <span>$</span>
-                        <span class="product-price">50</span>
+    <!-- Checkout -->
+    <section class="my-5 py-5">
+        <div class="container row mx-auto">
+            <div class="text-start col-lg-12 col-md-12 col-sm-12 pt-5 mt-3">
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="assets/imgs/9.jpg" alt="" class="img-fluid">
-                            <div>
-                                <p>White T-Shirt</p>
-                                <small><span>$</span>50</small>
-                                <br>
-                                <button href="#">Remove</button>
-                            </div>
+                <h3 class="font-weight-bold mb-4">Checkout</h3>
+                <div class="checkout">
+                    <form action="" id="checkout-form" class="">
+                        <div class="input-info mb-3 col-lg-6 col-md-12 col-sm-12">
+                            <label for="name" class="form-label">First Name</label>
+                            <input name="name" type="text" class="form-control" id="name" placeholder="Joe" required>
                         </div>
-                    </td>
-                    <td>
-                        <input type="number" value="1">
-                        <button class="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                        <span>$</span>
-                        <span class="product-price">50</span>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product-info">
-                            <img src="assets/imgs/9.jpg" alt="" class="img-fluid">
-                            <div>
-                                <p>White T-Shirt</p>
-                                <small><span>$</span>50</small>
-                                <br>
-                                <button href="#">Remove</button>
-                            </div>
+                        <div class="input-info mb-3 col-lg-6 col-md-12 col-sm-12">
+                            <label for="second-name" class="form-label">Second Name</label>
+                            <input name="second-name" type="text" class="form-control" id="second-name"
+                                placeholder="Doe" required>
                         </div>
-                    </td>
-                    <td>
-                        <input type="number" value="1">
-                        <button class="edit-btn">Edit</button>
-                    </td>
-                    <td>
-                        <span>$</span>
-                        <span class="product-price">50</span>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="total-price">
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td>$300</td>
-                </tr>
-                <tr>
-                    <td>Tax</td>
-                    <td>$40</td>
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td>$340</td>
-                </tr>
-            </table>
-        </div>
-        <div class="checkout-div">
-            <button class="checkout-btn">Checkout</button>
+                        <div class="input-info mb-3 col-lg-6 col-md-12 col-sm-12">
+                            <label for="city" class="form-label">City</label>
+                            <input name="city" type="text" class="form-control" id="city" placeholder="City" required>
+                        </div>
+                        <div class="input-info mb-3 col-lg-6 col-md-12 col-sm-12">
+                            <label for="zip-code" class="form-label">Zip Code</label>
+                            <input name="zip-code" type="number" class="form-control" id="zip-code" placeholder="00-000"
+                                required>
+                        </div>
+                        <div class="input-info mb-3 col-lg-6 col-md-12 col-sm-12">
+                            <label for="country" class="form-label">Country</label>
+                            <input name="country" type="text" class="form-control" id="country" placeholder="Country"
+                                required>
+                        </div>
+                        <div class="input-info mb-3 col-lg-6 col-md-12 col-sm-12">
+                            <label for="phone-number" class="form-label">Phone Number</label>
+                            <input name="phone-number" type="tel" class="form-control" id="phone-number"
+                                placeholder="123456789" required>
+                        </div>
+                        <div class="mb-3 mt-3 form-group">
+                            <button type="submit" class="submit-btn">Checkout</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Footer -->
@@ -176,7 +118,7 @@
                 </div>
                 <div>
                     <h6 class="text-uppercase">Email</h6>
-                    <p>2nVtZ@example.com</p>
+                    <p>2nVtZ@.com</p>
                 </div>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">

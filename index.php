@@ -98,8 +98,10 @@
 
     </div>
     <div class="row mx-auto container-fluid ">
+      <?php include('server/get_featured_products.php') ?>
+      <?php while($row = $featured_products->fetch_assoc()) { ?>
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/13.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
+        <img src="assets/imgs/<?php echo $row['product_image']?>" alt="" class="img-fluid mb-3 img-thumbnail">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -107,49 +109,11 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <h5 class="p-name">White T-Shirt</h5>
-        <h4 class="p-price">$19</h4>
+        <h5 class="p-name"><?php echo $row['product_name']?></h5>
+        <h4 class="p-price">$<?php echo $row['product_price']?></h4>
         <button class="buy-btn">Buy Now</button>
       </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/13.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name">Sports Bag</h5>
-        <h4 class="p-price">$9</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/13.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <h5 class="p-name">Brown Trouser</h5>
-        <h4 class="p-price">$29</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/13.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name">Classic Wallet</h5>
-        <h4 class="p-price">$49</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
+      <?php } ?>
     </div>
   </section>
   <!-- Banner -->

@@ -66,27 +66,16 @@
   <!-- new -->
   <section id="new" class="w-100 ">
     <div class="row p-0 m-0">
-      <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-        <img src="assets/imgs/7.jpg" alt="" class="img-fluid img-thumbnail">
-        <div class="details rounded">
-          <h2>Extreamly Awesome Shoes</h2>
-          <button>Shop Now</button>
+      <?php include('server/get_new_products.php') ?>
+      <?php while ($row = $new_products->fetch_assoc()) { ?>
+        <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
+          <img src="assets/imgs/<?php echo $row['product_image'] ?>" alt="" class="img-fluid img-thumbnail">
+          <div class="details rounded">
+            <h2><?php echo $row['product_description'] ?></h2>
+            <button>Shop Now</button>
+          </div>
         </div>
-      </div>
-      <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-        <img src="assets/imgs/8.jpg" alt="" class="img-fluid img-thumbnail">
-        <div class="details rounded">
-          <h2>Awesome Jackets</h2>
-          <button>Shop Now</button>
-        </div>
-      </div>
-      <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
-        <img src="assets/imgs/9.jpg" alt="" class="img-fluid img-thumbnail">
-        <div class="details rounded">
-          <h2>Watches Collection</h2>
-          <button>Shop Now</button>
-        </div>
-      </div>
+      <?php } ?>
     </div>
   </section>
   <!-- Featured  -->
@@ -99,20 +88,20 @@
     </div>
     <div class="row mx-auto container-fluid ">
       <?php include('server/get_featured_products.php') ?>
-      <?php while($row = $featured_products->fetch_assoc()) { ?>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/<?php echo $row['product_image']?>" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
+      <?php while ($row = $featured_products->fetch_assoc()) { ?>
+        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+          <img src="assets/imgs/<?php echo $row['product_image'] ?>" alt="" class="img-fluid mb-3 img-thumbnail">
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h5 class="p-name"><?php echo $row['product_name'] ?></h5>
+          <h4 class="p-price">$<?php echo $row['product_price'] ?></h4>
+          <button class="buy-btn">Buy Now</button>
         </div>
-        <h5 class="p-name"><?php echo $row['product_name']?></h5>
-        <h4 class="p-price">$<?php echo $row['product_price']?></h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
       <?php } ?>
     </div>
   </section>
@@ -125,194 +114,75 @@
     </div>
   </section>
   <!-- Clothes -->
-  <section id="clothes" class="my-5">
-    <div class="container text-center mt-5 py-5">
-      <h3>Hoodies & Coats</h3>
-      <hr class="mx-auto" />
-      <p>Check Out All The Amazing Clothes</p>
+  <?php include('server/get_product_category.php') ?>
+  <?php
+  foreach ($data as $item) {
 
-    </div>
-    <div class="row mx-auto container-fluid ">
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/12.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <h5 class="p-name">White T-Shirt</h5>
-        <h4 class="p-price">$19</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/12.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name">Sports Bag</h5>
-        <h4 class="p-price">$9</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/12.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <h5 class="p-name">Brown Trouser</h5>
-        <h4 class="p-price">$29</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/12.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name">Classic Wallet</h5>
-        <h4 class="p-price">$49</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
-  </section>
-  <!-- Watches -->
-  <section id="watches" class="my-5">
-    <div class="container text-center mt-5 py-5">
-      <h3>Amazing Watches</h3>
-      <hr class="mx-auto" />
-      <p>Check Out All The Amazing Watches</p>
 
-    </div>
-    <div class="row mx-auto container-fluid ">
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/11.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <h5 class="p-name">White T-Shirt</h5>
-        <h4 class="p-price">$19</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/11.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name">Sports Bag</h5>
-        <h4 class="p-price">$9</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/11.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <h5 class="p-name">Brown Trouser</h5>
-        <h4 class="p-price">$29</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/11.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name">Classic Wallet</h5>
-        <h4 class="p-price">$49</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
-  </section>
-  <!-- Shoes -->
-  <section id="shoes" class="my-5">
-    <div class="container text-center mt-5 py-5">
-      <h3>Wonderful Shoes</h3>
-      <hr class="mx-auto" />
-      <p>Check Out All The Amazing Shoes</p>
+  ?>
+    <section id="<?php echo $item["product_category"] ?>" class="my-5">
+      <div class="container text-center mt-5 py-5">
+        <h3><?php echo $item["product_category"] ?></h3>
+        <hr class="mx-auto" />
+        <p>Check Out All The Amazing <?php echo $item["product_category"] ?></p>
 
-    </div>
-    <div class="row mx-auto container-fluid ">
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/10.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <h5 class="p-name">White T-Shirt</h5>
-        <h4 class="p-price">$19</h4>
-        <button class="buy-btn">Buy Now</button>
       </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/10.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+      <div class="row mx-auto container-fluid ">
+        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h5 class="p-name">White T-Shirt</h5>
+          <h4 class="p-price">$19</h4>
+          <button class="buy-btn">Buy Now</button>
         </div>
-        <h5 class="p-name">Sports Bag</h5>
-        <h4 class="p-price">$9</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/10.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
+        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h5 class="p-name">Sports Bag</h5>
+          <h4 class="p-price">$9</h4>
+          <button class="buy-btn">Buy Now</button>
         </div>
-        <h5 class="p-name">Brown Trouser</h5>
-        <h4 class="p-price">$29</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/10.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+          <img src="assets/imgs/bag-1.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h5 class="p-name">Brown Trouser</h5>
+          <h4 class="p-price">$29</h4>
+          <button class="buy-btn">Buy Now</button>
         </div>
-        <h5 class="p-name">Classic Wallet</h5>
-        <h4 class="p-price">$49</h4>
-        <button class="buy-btn">Buy Now</button>
+        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+          <img src="assets/imgs/bag-1.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h5 class="p-name">Classic Wallet</h5>
+          <h4 class="p-price">$49</h4>
+          <button class="buy-btn">Buy Now</button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  <?php } ?>
   <!-- Footer -->
   <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">
@@ -350,11 +220,11 @@
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Instagram</h5>
         <div class="row">
-          <img src="assets/imgs/13.jpg" alt="" class="img-fluid instagram  m-2">
-          <img src="assets/imgs/12.jpg" alt="" class="img-fluid instagram  m-2">
-          <img src="assets/imgs/10.jpg" alt="" class="img-fluid instagram  m-2">
-          <img src="assets/imgs/11.jpg" alt="" class="img-fluid instagram  m-2">
-          <img src="assets/imgs/7.jpg" alt="" class="img-fluid instagram  m-2">
+          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid instagram  m-2">
+          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid instagram  m-2">
+          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid instagram  m-2">
+          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid instagram  m-2">
+          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid instagram  m-2">
         </div>
       </div>
     </div>

@@ -45,7 +45,9 @@ h5 {
 h6 {
   color: #d8d8d8;
 }
-
+img{
+  width: 100%;
+}
 hr {
   background-color: #fb774b;
   width: 30px;

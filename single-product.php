@@ -56,112 +56,61 @@
     </div>
   </nav>
   <!-- Single Product -->
-  <div class="container single-product my-5 pt-5">
-    <div class="row mt-5 justify-content-around">
-      <div class="col-lg-5 col-md-6 col-sm-12">
-        <img src="assets/imgs/bag-1.jpg" class="img-fluid w-100 pb-3" id="main-img" alt="">
-        <div class="small-img-row">
-          <div class="small-img-col">
-            <img src="assets/imgs/bag-1.jpg" class="img-fluid w-100 small-img" alt="">
-          </div>
-          <div class="small-img-col">
-            <img src="assets/imgs/bag-1.jpg" class="img-fluid w-100 small-img" alt="">
-          </div>
-          <div class="small-img-col">
-            <img src="assets/imgs/bag-1.jpg" class="img-fluid w-100 small-img" alt="">
-          </div>
-          <div class="small-img-col">
-            <img src="assets/imgs/bag-1.jpg" class="img-fluid w-100 small-img" alt="">
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12 col-12">
-        <h6>Home/Shoes</h6>
-        <h3 class="py-4">Adidas Shoes</h3>
-        <h2>$55</h2>
-        <input class="mx-1" type="number" value="1" />
-        <select class="mx-1">
-          <option>Select Size</option>
-          <option>XXL</option>
-          <option>XL</option>
-          <option>Large</option>
-          <option>Medium</option>
-          <option>Small</option>
-        </select>
-        <button class="buy-btn">Add To Cart</button>
-        <h4 class="my-5">Product Details</h4>
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, facilis iure blanditiis laborum quo sit!
-          Vitae
-          deserunt dolorum nihil impedit eaque! Debitis, cupiditate quis rerum optio cumque voluptate sint libero?
-          Sint quasi ad ducimus architecto iure eaque molestias deleniti eligendi est, voluptatem corrupti veniam
-          cupiditate obcaecati nesciunt magni tenetur pariatur exercitationem a, ea soluta eos, ullam dolore quam.
-          Illum, ipsum.</span>
+  <?php
+  $parts = explode("=", $_SERVER["QUERY_STRING"]);
+  $product_id = $parts[1];
+  ?>
+  <?php
 
-      </div>
-    </div>
-  </div>
-  <!-- Related -->
-  <section id="rel-products" class="my-5 pb-5">
-    <div class="container text-center mt-5 py-5">
-      <h3>Related Products</h3>
-      <hr class="mx-auto" />
+include("server/connection.php");
+$stmt = $conn->prepare("SELECT * FROM products WHERE product_id=$product_id");
+$stmt->execute();
 
-    </div>
-    <div class="row mx-auto container-fluid ">
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
+$single_product = $stmt->get_result();
+?>
+
+  <?php while ($row = $single_product->fetch_assoc()) { ?>
+    <div class="container single-product my-5 pt-5">
+      <div class="row mt-5 justify-content-around">
+        <div class="col-lg-5 col-md-6 col-sm-12">
+          <img src="assets/imgs/<?php echo $row["product_image"]; ?>" class="img-fluid w-100 pb-3" id="main-img" alt="">
+          <div class="small-img-row">
+            <div class="small-img-col">
+              <img src="assets/imgs/<?php echo $row["product_image"]; ?>" class="img-fluid w-100 small-img" alt="">
+            </div>
+            <div class="small-img-col">
+              <img src="assets/imgs/<?php echo $row["product_image"]; ?>" class="img-fluid w-100 small-img" alt="">
+            </div>
+            <div class="small-img-col">
+              <img src="assets/imgs/<?php echo $row["product_image"]; ?>" class="img-fluid w-100 small-img" alt="">
+            </div>
+            <div class="small-img-col">
+              <img src="assets/imgs/<?php echo $row["product_image"]; ?>" class="img-fluid w-100 small-img" alt="">
+            </div>
+          </div>
         </div>
-        <h5 class="p-name">White T-Shirt</h5>
-        <h4 class="p-price">$19</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+        <div class="col-lg-6 col-md-12 col-12">
+          <h6>Home/<?php echo $row["product_category"]; ?></h6>
+          <h3 class="py-4"><?php echo $row["product_name"]; ?></h3>
+          <h2>$<?php echo $row["product_price"]; ?></h2>
+          <input class="mx-1" type="number" value="1" />
+          <select class="mx-1">
+            <option>Select Size</option>
+            <option>XXL</option>
+            <option>XL</option>
+            <option>Large</option>
+            <option>Medium</option>
+            <option>Small</option>
+          </select>
+          <button class="buy-btn">Add To Cart</button>
+          <h4 class="my-5">Product Details</h4>
+          <span><?php echo $row["product_description"]; ?></span>
+
         </div>
-        <h5 class="p-name">Sports Bag</h5>
-        <h4 class="p-price">$9</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/bag-1.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <h5 class="p-name">Brown Trouser</h5>
-        <h4 class="p-price">$29</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img src="assets/imgs/bag-1.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name">Classic Wallet</h5>
-        <h4 class="p-price">$49</h4>
-        <button class="buy-btn">Buy Now</button>
       </div>
     </div>
-  </section>
+  <?php } ?>
+
   <!-- Footer -->
   <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">

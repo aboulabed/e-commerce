@@ -114,7 +114,9 @@
     </div>
   </section>
   <!-- Clothes -->
-  <?php include('server/get_product_category.php') ?>
+  <?php include('server/get_product_category.php'); ?>
+  <?php include('server/get_home_products.php'); ?>
+
   <?php
   foreach ($data as $item) {
 
@@ -127,59 +129,28 @@
         <p>Check Out All The Amazing <?php echo $item["product_category"] ?></p>
 
       </div>
-      <div class="row mx-auto container-fluid ">
-        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <h5 class="p-name">White T-Shirt</h5>
-          <h4 class="p-price">$19</h4>
-          <button class="buy-btn">Buy Now</button>
-        </div>
-        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img src="assets/imgs/bag-1.jpg" alt="" class="img-fluid mb-3 img-thumbnail">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <h5 class="p-name">Sports Bag</h5>
-          <h4 class="p-price">$9</h4>
-          <button class="buy-btn">Buy Now</button>
-        </div>
-        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img src="assets/imgs/bag-1.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <h5 class="p-name">Brown Trouser</h5>
-          <h4 class="p-price">$29</h4>
-          <button class="buy-btn">Buy Now</button>
-        </div>
-        <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img src="assets/imgs/bag-1.jpg " alt="" class="img-fluid mb-3 img-thumbnail">
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <h5 class="p-name">Classic Wallet</h5>
-          <h4 class="p-price">$49</h4>
-          <button class="buy-btn">Buy Now</button>
-        </div>
+      <div class="row mx-auto container-fluid">
+        <?php
+        foreach ($home_products as $product) {
+          if ($product["product_category"] == $item["product_category"]) {
+        ?>
+            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+              <img src="assets/imgs/<?php echo $product["product_image"] ?>" alt="" class="img-fluid mb-3 img-thumbnail">
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <h5 class="p-name"><?php echo $product["product_name"] ?></h5>
+              <h4 class="p-price">$<?php echo $product["product_price"] ?></h4>
+              <button class="buy-btn">Buy Now</button>
+            </div>
+        <?php
+          }
+        }
+        ?>
       </div>
     </section>
   <?php } ?>

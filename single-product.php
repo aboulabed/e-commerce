@@ -62,12 +62,12 @@
   ?>
   <?php
 
-include("server/connection.php");
-$stmt = $conn->prepare("SELECT * FROM products WHERE product_id=$product_id");
-$stmt->execute();
+  include("server/connection.php");
+  $stmt = $conn->prepare("SELECT * FROM products WHERE product_id=$product_id");
+  $stmt->execute();
 
-$single_product = $stmt->get_result();
-?>
+  $single_product = $stmt->get_result();
+  ?>
 
   <?php while ($row = $single_product->fetch_assoc()) { ?>
     <div class="container single-product my-5 pt-5">
@@ -93,16 +93,14 @@ $single_product = $stmt->get_result();
           <h6>Home/<?php echo $row["product_category"]; ?></h6>
           <h3 class="py-4"><?php echo $row["product_name"]; ?></h3>
           <h2>$<?php echo $row["product_price"]; ?></h2>
-          <input class="mx-1" type="number" value="1" />
-          <select class="mx-1">
-            <option>Select Size</option>
-            <option>XXL</option>
-            <option>XL</option>
-            <option>Large</option>
-            <option>Medium</option>
-            <option>Small</option>
-          </select>
-          <button class="buy-btn">Add To Cart</button>
+          <form action="cart.php" method="POST">
+            <input type="hidden" name="product_id" value="<?php echo $row["product_id"]; ?>">
+            <input type="hidden" name="product_image" value="<?php echo $row["product_image"]; ?>">
+            <input type="hidden" name="product_name" value="<?php echo $row["product_name"]; ?>">
+            <input type="hidden" name="product_price" value="<?php echo $row["product_price"]; ?>">
+            <input class="mx-1" name="product_quantity" type="number" value="1" />
+            <button class="buy-btn" name="add_to_cart" type="submit">Add To Cart</button>
+          </form>
           <h4 class="my-5">Product Details</h4>
           <span><?php echo $row["product_description"]; ?></span>
 

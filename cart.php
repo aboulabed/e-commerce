@@ -1,3 +1,63 @@
+<?php
+
+// Start or resume a session to store cart data
+session_start();
+
+// Check if the 'add_to_cart' form has been submitted
+if (isset($_POST['add_to_cart'])) {
+
+    // Check if the 'cart' session variable already exists
+    if (isset($_SESSION['cart'])) {
+
+        // Extract all product IDs from the cart into an array
+        $products_array_ids = array_column($_SESSION['cart'], 'product_id');
+
+        // Check if the product being added is already in the cart
+        if (!in_array($_POST['product_id'], $products_array_ids)) {
+
+            // If the product is not in the cart, create an array with its details
+            $product_array = array(
+                'product_id' => $_POST['product_id'],         // Product ID from the form
+                'product_name' => $_POST['product_name'],     // Product name from the form
+                'product_price' => $_POST['product_price'],   // Product price from the form
+                'product_image' => $_POST['product_image'],   // Product image from the form
+                'product_quantity' => $_POST['product_quantity'], // Product quantity from the form
+            );
+
+            // Add the product array to the cart session, using the product ID as the key
+            $_SESSION['cart'][$_POST['product_id']] = $product_array;
+        } else {
+            // If the product is already in the cart, show an alert message
+            echo '<script>alert("Product already added")</script>';
+        }
+    } else {
+        // If the 'cart' session variable doesn't exist, initialize it as an empty array
+        $_SESSION['cart'] = array();
+
+        // Create an array with the product details
+        $product_array = array(
+            'product_id' => $_POST['product_id'],         // Product ID from the form
+            'product_name' => $_POST['product_name'],     // Product name from the form
+            'product_price' => $_POST['product_price'],   // Product price from the form
+            'product_image' => $_POST['product_image'],   // Product image from the form
+            'product_quantity' => $_POST['product_quantity'], // Product quantity from the form
+        );
+
+        // Add the product array to the cart session, using the product ID as the key
+        $_SESSION['cart'][$_POST['product_id']] = $product_array;
+    }
+}
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +84,7 @@
             <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="shop.html">Shop</a>

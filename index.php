@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link active" href="index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="shop.html">Shop</a>
@@ -71,7 +71,7 @@
         <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
           <img src="assets/imgs/<?php echo $row['product_image'] ?>" alt="" class="img-fluid img-thumbnail">
           <div class="details rounded">
-            <h2><?php echo $row['product_description'] ?></h2>
+            <h2><?php echo $row['product_name'] ?></h2>
             <button>Shop Now</button>
           </div>
         </div>

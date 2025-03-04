@@ -52,6 +52,8 @@
       <h1><span>Best Prices</span> This Year</h1>
       <p>Discover all the new arrivals of ready-to-wear and accessories.</p>
       <button>Shop Now</button>
+      <a href="shop.html"><button>Buy Now</button></a>
+
     </div>
   </section>
   <!-- brands -->
@@ -72,7 +74,7 @@
           <img src="assets/imgs/<?php echo $row['product_image'] ?>" alt="" class="img-fluid img-thumbnail">
           <div class="details rounded">
             <h2><?php echo $row['product_name'] ?></h2>
-            <button>Shop Now</button>
+            <a href="single-product.php?product_id=<?php echo $row["product_id"] ?>"><button class="buy-btn">Buy Now</button></a>
           </div>
         </div>
       <?php } ?>
@@ -100,7 +102,7 @@
           </div>
           <h5 class="p-name"><?php echo $row['product_name'] ?></h5>
           <h4 class="p-price">$<?php echo $row['product_price'] ?></h4>
-          <button class="buy-btn">Buy Now</button>
+          <a href="single-product.php?product_id=<?php echo $row["product_id"] ?>"><button class="buy-btn">Buy Now</button></a>
         </div>
       <?php } ?>
     </div>

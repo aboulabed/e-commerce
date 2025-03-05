@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_POST['checkout'])) {
+    header("Location: checkout.php");
+    exit(); // Ensure no further code is executed
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +57,7 @@
 
                 <h3 class="font-weight-bold mb-4">Checkout</h3>
                 <div class="checkout">
-                    <form action="" id="checkout-form" class="">
+                    <form action="server/place-order.php" method="POST" id="checkout-form" class="">
                         <div class="input-info mb-3 col-lg-6 col-md-12 col-sm-12">
                             <label for="name" class="form-label">First Name</label>
                             <input name="name" type="text" class="form-control" id="name" placeholder="Joe" required>
@@ -80,7 +88,8 @@
                                 placeholder="123456789" required>
                         </div>
                         <div class="mb-3 mt-3 form-group">
-                            <button type="submit" class="submit-btn">Checkout</button>
+                            <p>Total: $<?php echo $_SESSION['total_price']; ?></p>
+                            <button type="submit" name="place-order" class="submit-btn">Checkout</button>
                         </div>
                     </form>
                 </div>

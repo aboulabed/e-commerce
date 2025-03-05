@@ -38,9 +38,7 @@
           <li class="nav-item">
             <a class="nav-link active" href="shop.html">Shop</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="contact-us.html">Contact Us</a>
           </li>

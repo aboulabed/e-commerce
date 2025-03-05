@@ -28,9 +28,7 @@
           <li class="nav-item">
             <a class="nav-link" href="shop.html">Shop</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="contact-us.html">Contact Us</a>
           </li>
@@ -51,8 +49,7 @@
       <h5>NEW ARRIVALS</h5>
       <h1><span>Best Prices</span> This Year</h1>
       <p>Discover all the new arrivals of ready-to-wear and accessories.</p>
-      <button>Shop Now</button>
-      <a href="shop.html"><button>Buy Now</button></a>
+      <a href="shop.html"><button>Shop Now</button></a>
 
     </div>
   </section>

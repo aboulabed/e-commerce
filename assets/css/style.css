@@ -429,7 +429,15 @@ footer {
   }
 
 }
-
+.cart-error-msg{
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  svg{
+    font-size: 3rem;
+  }
+}
 .checkout-div{
   display: flex;
   justify-content: flex-end;

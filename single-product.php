@@ -47,7 +47,7 @@
 "></i></a>
 
 
-            <a href="account.html"><i class="fas fa-user" style="color:#212529"></i></a>
+            <a href="account.php"><i class="fas fa-user" style="color:#212529"></i></a>
           </li>
         </ul>
       </div>

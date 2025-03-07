@@ -124,7 +124,7 @@ $_SESSION['total_price'] = $sub_total + $tax;
                         <a href="cart.html"><i class="fas fa-shopping-cart active" style="color:#212529 
 "></i></a>
 
-                        <a href="account.html"><i class="fas fa-user" style="color:#212529"></i></a>
+                        <a href="account.php"><i class="fas fa-user" style="color:#212529"></i></a>
                     </li>
                 </ul>
             </div>

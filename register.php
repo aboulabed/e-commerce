@@ -1,3 +1,42 @@
+<?php
+include('server/connection.php');
+session_start();
+if (isset($_SESSION['user_name'])) {
+
+    echo "<script>window.location.href='account.php'</script>";
+} elseif (isset($_POST['register'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $rePassword = $_POST['rePassword'];
+    if ($password != $rePassword) {
+        echo "<script>alert('Password does not match')</script>";
+    } else if (strlen($password) < 8) {
+        echo "<script>alert('Password must be at least 8 characters long')</script>";
+    } else {
+
+        // check if email already exists
+        $stmt = $conn->prepare("SELECT * FROM `users` WHERE `user_email`=?");
+        $stmt->bind_param("s", $email);
+        $stmt->store_result();
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            echo "<script>alert('Email already exists')</script>";
+        } else {
+
+            $conn->prepare("INSERT INTO  `users`(`user_name`, `user_email`, `user_password`) VALUES  (?,?,?)")->execute([$name, $email, md5($password)]);
+            echo "<script>window.location.href='login.php'</script>";
+        }
+    }
+}
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +74,8 @@
                     </li>
                     <li class="nav-item">
                         <a href="cart.html"><i class="fas fa-shopping-cart" style="color:#212529"></i></a>
-                        <a href="account.html"><i class="fas fa-user" style="color:#212529"></i></a>
 
+                        <a href="account.php"><i class="fas fa-user" style="color:#212529"></i></a>
                     </li>
                 </ul>
             </div>
@@ -45,31 +84,37 @@
     <!-- Login -->
     <section class="my-5 py-5">
         <div class="container text-center mt-3 pt-5">
-            <h2 class="font-weight-bold">Login</h2>
+            <h2 class="font-weight-bold">Create New Account</h2>
             <hr class="mx-auto">
         </div>
         <div class="container mx-auto">
-            <form id="login-form">
+            <form id="register-form" action="register.php" method="POST">
+                <div class="mb-3 form-group">
+                    <label for="Inputname1" class="form-label">Name</label>
+                    <input name="name" type="text" class="form-control" id="Inputname1" placeholder="Enter your name"
+                        required>
+                </div>
                 <div class="mb-3 form-group">
                     <label for="InputEmail1" class="form-label">Email address</label>
                     <input name="email" type="email" class="form-control" id="InputEmail1"
                         placeholder="Enter your email" required>
                 </div>
                 <div class="mb-3 form-group">
-                    <label for="InputPassword" class="form-label">Password</label>
-                    <input name="password" type="password" class="form-control" id="InputPassword"
+                    <label for="InputPassword1" class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" id="InputPassword1"
                         placeholder="Enter your password" required>
                 </div>
-                <div class="mb-3 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="Check">
-                    <label name="button" class="form-check-label" for="Check">Remember me</label>
+                <div class="mb-3 form-group">
+                    <label for="InputPassword2" class="form-label">Repeat Password</label>
+                    <input name="rePassword" type="password" class="form-control" id="InputPassword2"
+                        placeholder="Enter your password" required>
                 </div>
                 <div class="mb-3 form-group">
-                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="submit" class="submit-btn" name="register">Submit</button>
                 </div>
                 <div class="form-group">
-                    <span class="fw-light pe-1">Don’t have an account?</span><a href="register.html" class="btn p-0">
-                        Register</a>
+                    <span class="fw-light pe-1">Already have an account?</span><a href="login.php" class="btn p-0">
+                        Login</a>
                 </div>
             </form>
         </div>

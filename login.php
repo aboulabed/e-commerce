@@ -1,3 +1,26 @@
+<?php
+include('server/connection.php');
+session_start();
+if (isset($_SESSION['user_name'])) {
+
+    echo "<script>window.location.href='account.php'</script>";
+} elseif (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `user_email`=? AND `user_password`=?");
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        $_SESSION['user_name'] = $user['user_name'];
+        $_SESSION['user_email'] = $user['user_email'];
+        $_SESSION['user_password'] = $user['user_password'];
+        echo "<script>window.location.href='account.php'</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +58,8 @@
                     </li>
                     <li class="nav-item">
                         <a href="cart.html"><i class="fas fa-shopping-cart" style="color:#212529"></i></a>
+                        <a href="account.php"><i class="fas fa-user" style="color:#212529"></i></a>
 
-                        <a href="account.html"><i class="fas fa-user" style="color:#212529"></i></a>
                     </li>
                 </ul>
             </div>
@@ -45,37 +68,31 @@
     <!-- Login -->
     <section class="my-5 py-5">
         <div class="container text-center mt-3 pt-5">
-            <h2 class="font-weight-bold">Create New Account</h2>
+            <h2 class="font-weight-bold">Login</h2>
             <hr class="mx-auto">
         </div>
         <div class="container mx-auto">
-            <form id="register-form">
-                <div class="mb-3 form-group">
-                    <label for="Inputname1" class="form-label">Name</label>
-                    <input name="name" type="text" class="form-control" id="Inputname1" placeholder="Enter your name"
-                        required>
-                </div>
+            <form id="login-form" method="post" action="login.php">
                 <div class="mb-3 form-group">
                     <label for="InputEmail1" class="form-label">Email address</label>
                     <input name="email" type="email" class="form-control" id="InputEmail1"
                         placeholder="Enter your email" required>
                 </div>
                 <div class="mb-3 form-group">
-                    <label for="InputPassword1" class="form-label">Password</label>
-                    <input name="password" type="password" class="form-control" id="InputPassword1"
+                    <label for="InputPassword" class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" id="InputPassword"
                         placeholder="Enter your password" required>
                 </div>
-                <div class="mb-3 form-group">
-                    <label for="InputPassword2" class="form-label">Repeat Password</label>
-                    <input name="password" type="password" class="form-control" id="InputPassword2"
-                        placeholder="Enter your password" required>
+                <div class="mb-3 form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="Check">
+                    <label class="form-check-label" for="Check">Remember me</label>
                 </div>
                 <div class="mb-3 form-group">
-                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="submit" class="submit-btn" name="login">Submit</button>
                 </div>
                 <div class="form-group">
-                    <span class="fw-light pe-1">Already have an account?</span><a href="login.html" class="btn p-0">
-                        Login</a>
+                    <span class="fw-light pe-1">Don’t have an account?</span><a href="register.php" class="btn p-0">
+                        Register</a>
                 </div>
             </form>
         </div>

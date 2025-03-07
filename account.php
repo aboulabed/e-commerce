@@ -1,3 +1,25 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_name'])) {
+    echo "<script>window.location.href='login.php'</script>";
+}
+$name = explode(" ", $_SESSION['user_name']);
+$firstName = $name[0];
+if (count($name) > 1) {
+    $lastName = $name[1];
+}
+$email = $_SESSION['user_email'];
+$password = $_SESSION['user_password'];
+
+if(isset($_GET['logout'])){
+    unset($_SESSION['user_name']);
+    unset($_SESSION['user_email']);
+    unset($_SESSION['user_password']);
+    echo "<script>window.location.href='login.php'</script>";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +57,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="cart.html"><i class="fas fa-shopping-cart" style="color:#212529"></i></a>
-                        <a href="account.html"><i class="fas fa-user active" style="color:#212529"></i></a>
+                        <a href="account.php"><i class="fas fa-user active" style="color:#212529"></i></a>
 
                     </li>
                 </ul>
@@ -52,27 +74,28 @@
                     <form action="" id="account">
                         <div class="input-info mb-3">
                             <label for="Name" class="form-label">First Name</label>
-                            <input name="name" type="text" class="form-control" id="Name" value="Suhail" required>
+                            <input name="name" type="text" class="form-control" id="Name" value="<?php echo $firstName ?>" required>
                         </div>
-                        <div class="input-info mb-3">
-                            <label for="LastName" class="form-label">Last Name</label>
-                            <input name="LastName" type="text" class="form-control" id="LastName" value="Ahmed"
-                                required>
-                        </div>
+                        <?php if (isset($lastName)) { ?>
+                            <div class="input-info mb-3">
+                                <label for="LastName" class="form-label">Last Name</label>
+                                <input name="LastName" type="text" class="form-control" id="LastName" value="<?php echo $lastName ?>"
+                                    required>
+                            </div>
+                        <?php } ?>
                         <div class="input-info mb-3">
                             <label for="Email" class="form-label">Email</label>
-                            <input name="name" type="text" class="form-control" id="Email" value="Suhail@gmail.com"
+                            <input name="name" type="text" class="form-control" id="Email" value="<?php echo $email ?>"
                                 required>
-                        </div>
-                        <div class="input-info mb-3">
-                            <label for="Password" class="form-label">Password</label>
-                            <input name="Password" type="text" class="form-control" id="Password" value="5478f5#jh"
-                                required>
-                        </div>
-                        <div class="mb-3 mt-3 form-group">
-                            <button type="submit" class="submit-btn">Update</button>
                         </div>
                     </form>
+                    <div class="logout mt-3 ">
+                        <button style="padding: 13px 23px;">
+
+                            <i class="fas fa-sign-out-alt "></i>
+                            <a href="account.php?logout=1" class="ms-2">Logout</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

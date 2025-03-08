@@ -1,40 +1,53 @@
 <?php
 include('server/connection.php');
 session_start();
-if (isset($_SESSION['user_name'])) {
 
+// Redirect if the user is already logged in
+if (isset($_SESSION['user_name'])) {
     echo "<script>window.location.href='account.php'</script>";
-} elseif (isset($_POST['register'])) {
+    exit(); // Stop further execution
+}
+
+// Handle registration form submission
+if (isset($_POST['register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $rePassword = $_POST['rePassword'];
+
+    // Validate password
     if ($password != $rePassword) {
-        echo "<script>alert('Password does not match')</script>";
+        echo "<script>alert('Password does not match');</script>";
     } else if (strlen($password) < 8) {
-        echo "<script>alert('Password must be at least 8 characters long')</script>";
+        echo "<script>alert('Password must be at least 8 characters long');</script>";
     } else {
-
-        // check if email already exists
-        $stmt = $conn->prepare("SELECT * FROM `users` WHERE `user_email`=?");
+        // Check if email already exists
+        $stmt = $conn->prepare("SELECT * FROM `users` WHERE `user_email` = ?");
         $stmt->bind_param("s", $email);
-        $stmt->store_result();
         $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            echo "<script>alert('Email already exists')</script>";
-        } else {
+        $stmt->store_result(); // Store the result set
 
-            $conn->prepare("INSERT INTO  `users`(`user_name`, `user_email`, `user_password`) VALUES  (?,?,?)")->execute([$name, $email, md5($password)]);
-            echo "<script>window.location.href='login.php'</script>";
+        if ($stmt->num_rows > 0) {
+            echo "<script>alert('Email already exists');</script>";
+        } else {
+            // Insert new user into the database
+            $hashedPassword = md5($password); // Hash the password (consider using password_hash() instead)
+            $insertStmt = $conn->prepare("INSERT INTO `users` (`user_name`, `user_email`, `user_password`) VALUES (?, ?, ?)");
+            $insertStmt->bind_param("sss", $name, $email, $hashedPassword);
+
+            if ($insertStmt->execute()) {
+                echo "<script>window.location.href='login.php';</script>";
+                exit(); // Stop further execution
+            } else {
+                echo "<script>alert('Registration failed. Please try again.');</script>";
+            }
+
+            $insertStmt->close(); // Close the insert statement
         }
+
+        $stmt->close(); // Close the select statement
     }
 }
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>

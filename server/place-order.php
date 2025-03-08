@@ -10,7 +10,7 @@ if (isset($_POST['place-order'])) {
   $country = $_POST['country'];
   $city = $_POST['city'];
   $order_cost = $_SESSION['total_price'];
-  $user_id = 1;
+  $user_id = $_SESSION['user_id'];
   $user_address = $country . ', ' . $city . ', ' . $zip_code;
 
   $conn->prepare('INSERT INTO `orders`( `order_cost`,  `user_id`, `user_phone`, `user_city`, `user_address`)

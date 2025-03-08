@@ -1,23 +1,46 @@
 <?php
 include('server/connection.php');
 session_start();
-if (isset($_SESSION['user_name'])) {
 
-    echo "<script>window.location.href='account.php'</script>";
-} elseif (isset($_POST['login'])) {
+// Redirect if the user is already logged in
+if (isset($_SESSION['user_name'])) {
+    echo "<script>window.location.href='account.php';</script>";
+    exit(); // Stop further execution
+}
+
+// Handle login form submission
+if (isset($_POST['login'])) {
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
-    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `user_email`=? AND `user_password`=?");
-    $stmt->bind_param("ss", $email, $password);
+    $password = $_POST['password'];
+
+    // Fetch user from the database
+    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `user_email` = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
+
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-        $_SESSION['user_name'] = $user['user_name'];
-        $_SESSION['user_email'] = $user['user_email'];
-        $_SESSION['user_password'] = $user['user_password'];
-        echo "<script>window.location.href='account.php'</script>";
+
+        // Verify the password (using md5 for now, but consider password_verify() for secure hashing)
+        if (md5($password) === $user['user_password']) {
+            // Set session variables
+            $_SESSION['user_name'] = $user['user_name'];
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_email'] = $user['user_email'];
+
+            // Redirect to account page
+            echo "<script>window.location.href='account.php';</script>";
+            exit(); // Stop further execution
+        } else {
+            echo "<script>alert('Incorrect password');</script>";
+        }
+    } else {
+        echo "<script>alert('Email not found');</script>";
     }
+
+    // Close the statement
+    $stmt->close();
 }
 ?>
 

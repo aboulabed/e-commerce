@@ -26,14 +26,14 @@
             <a class="nav-link active" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop.html">Shop</a>
+            <a class="nav-link" href="shop.php">Shop</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="contact-us.html">Contact Us</a>
+            <a class="nav-link" href="contact-us.php">Contact Us</a>
           </li>
           <li class="nav-item">
-            <a href="cart.html"><i class="fas fa-shopping-cart " style="color:#212529 
+            <a href="cart.php"><i class="fas fa-shopping-cart " style="color:#212529 
 "></i></a>
 
 
@@ -49,7 +49,7 @@
       <h5>NEW ARRIVALS</h5>
       <h1><span>Best Prices</span> This Year</h1>
       <p>Discover all the new arrivals of ready-to-wear and accessories.</p>
-      <a href="shop.html"><button>Shop Now</button></a>
+      <a href="shop.php"><button>Shop Now</button></a>
 
     </div>
   </section>

@@ -1,6 +1,6 @@
 <?php
 include('server/connection.php');
-session_start();
+include('server/check_login.php');
 if (isset($_POST['search']) && isset($_POST['category'])) {
     $category = $_POST['category'];
 

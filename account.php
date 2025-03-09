@@ -1,6 +1,6 @@
 <?php
 include('server/connection.php');
-session_start();
+include('server/check_login.php');
 
 // Redirect to login if the user is not logged in
 if (!isset($_SESSION['user_name'])) {

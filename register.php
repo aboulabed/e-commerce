@@ -52,42 +52,42 @@ if (isset($_POST['register'])) {
 
 <?php include('layouts/header.php'); ?>
 
-    <!-- Login -->
-    <section class="my-5 py-5">
-        <div class="container text-center mt-3 pt-5">
-            <h2 class="font-weight-bold">Create New Account</h2>
-            <hr class="mx-auto">
-        </div>
-        <div class="container mx-auto">
-            <form id="register-form" action="register.php" method="POST">
-                <div class="mb-3 form-group">
-                    <label for="Inputname1" class="form-label">Name</label>
-                    <input name="name" type="text" class="form-control" id="Inputname1" placeholder="Enter your name"
-                        required>
-                </div>
-                <div class="mb-3 form-group">
-                    <label for="InputEmail1" class="form-label">Email address</label>
-                    <input name="email" type="email" class="form-control" id="InputEmail1"
-                        placeholder="Enter your email" required>
-                </div>
-                <div class="mb-3 form-group">
-                    <label for="InputPassword1" class="form-label">Password</label>
-                    <input name="password" type="password" class="form-control" id="InputPassword1"
-                        placeholder="Enter your password" required>
-                </div>
-                <div class="mb-3 form-group">
-                    <label for="InputPassword2" class="form-label">Repeat Password</label>
-                    <input name="rePassword" type="password" class="form-control" id="InputPassword2"
-                        placeholder="Enter your password" required>
-                </div>
-                <div class="mb-3 form-group">
-                    <button type="submit" class="submit-btn" name="register">Submit</button>
-                </div>
-                <div class="form-group">
-                    <span class="fw-light pe-1">Already have an account?</span><a href="login.php" class="btn p-0">
-                        Login</a>
-                </div>
-            </form>
-        </div>
-    </section>
-    <?php include('layouts/footer.php'); ?>
+<!-- Login -->
+<section class="my-5 py-5">
+    <div class="container text-center mt-3 pt-5">
+        <h2 class="font-weight-bold">Create New Account</h2>
+        <hr class="mx-auto">
+    </div>
+    <div class="container mx-auto">
+        <form id="register-form" action="register.php" method="POST">
+            <div class="mb-3 form-group">
+                <label for="Inputname1" class="form-label">Name</label>
+                <input name="name" type="text" class="form-control" id="Inputname1" placeholder="Enter your name"
+                    required>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="InputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="InputEmail1"
+                    placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="InputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="InputPassword1"
+                    placeholder="Enter your password" required>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="InputPassword2" class="form-label">Repeat Password</label>
+                <input name="rePassword" type="password" class="form-control" id="InputPassword2"
+                    placeholder="Enter your password" required>
+            </div>
+            <div class="mb-3 form-group">
+                <button type="submit" class="submit-btn" name="register">Submit</button>
+            </div>
+            <div class="form-group">
+                <span class="fw-light pe-1">Already have an account?</span><a href="login.php" class="btn p-0">
+                    Login</a>
+            </div>
+        </form>
+    </div>
+</section>
+<?php include('layouts/footer.php'); ?>

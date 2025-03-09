@@ -1,4 +1,6 @@
-<?php include('layouts/header.php'); ?>
+<?php include('layouts/header.php');
+include('server/check_login.php');
+?>
 
 <!-- Single Product -->
 <?php

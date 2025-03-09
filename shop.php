@@ -1,11 +1,14 @@
 <?php
 include('server/connection.php');
+session_start();
 if (isset($_POST['search']) && isset($_POST['category'])) {
     $category = $_POST['category'];
 
     $price = $_POST['price'];
+    $_SESSION['selected_category'] = $category;
+    $_SESSION['selected_price'] = $price;
     $stmt1 = $conn->prepare("SELECT * FROM products WHERE product_category = ? AND product_price BETWEEN 0 AND ? ");
-    $stmt1->bind_param("si", $category, $price);
+    $stmt1->bind_param("si", $_SESSION['selected_category'], $_SESSION['selected_price']);
     $stmt1->execute();
     $products = $stmt1->get_result();
     $stmt1->close();
@@ -107,7 +110,9 @@ $lowest_price = ceil($lowest_price);
                         <p>Category</p>
                         <?php while ($category = $products_category->fetch_assoc()) { ?>
                             <div class="form-check">
-                                <input class="form-check-input" value="<?php echo $category['product_category']; ?>" type="radio" name="category" id="category1" required> 
+                                <input class="form-check-input" value="<?php echo $category['product_category']; ?>" type="radio" name="category" id="category1" required
+                                    <?php echo (isset($_SESSION['selected_category']) && $_SESSION['selected_category'] === $category['product_category']) ? 'checked' : ''; ?>>
+
                                 <label class="form-check-label" for="category1">
                                     <?php echo $category['product_category']; ?>
                                 </label>
@@ -118,7 +123,7 @@ $lowest_price = ceil($lowest_price);
                 <div class="row mx-auto container mt-5">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <p>Price</p>
-                        <input type="range" class="form-range w-50" name="price" value="20" min="<?php echo $lowest_price; ?>" max="<?php echo $highest_price; ?>" id="priceRange" required>
+                        <input type="range" class="form-range w-50" name="price" value="<?php echo isset($_SESSION['selected_price'])  ? $_SESSION['selected_price'] : 20 ?>" min="<?php echo $lowest_price; ?>" max="<?php echo $highest_price; ?>" id="priceRange" required>
                         <div class="w-50">
                             <p id="priceValue" class="float-start">$<?php echo $lowest_price; ?></p>
                             <p id="priceValue" class="float-end">$<?php echo $highest_price; ?></p>

@@ -31,7 +31,7 @@ if (isset($_POST['register'])) {
             echo "<script>alert('Email already exists');</script>";
         } else {
             // Insert new user into the database
-            $hashedPassword = md5($password); // Hash the password (consider using password_hash() instead)
+            $hashedPassword = $password; // Hash the password (consider using password_hash() instead)
             $insertStmt = $conn->prepare("INSERT INTO `users` (`user_name`, `user_email`, `user_password`) VALUES (?, ?, ?)");
             $insertStmt->bind_param("sss", $name, $email, $hashedPassword);
 

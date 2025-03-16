@@ -69,8 +69,11 @@ if (isset($_POST['add_to_cart'])) {
     exit(); // Ensure no further code is executed
 }
 $sub_total = 0;
-foreach ($_SESSION['cart'] as $product) {
-    $sub_total += $product['product_price'] * $product['product_quantity'];
+if (isset($_SESSION['cart'])) {
+
+    foreach ($_SESSION['cart'] as $product) {
+        $sub_total += $product['product_price'] * $product['product_quantity'];
+    }
 }
 
 $tax = Round($sub_total * 0.05, 1);
@@ -152,7 +155,7 @@ $_SESSION['total_price'] = $sub_total + $tax;
             </table>
         </div>
         <div class="checkout-div">
-            <form action="checkout.php" method="POST">
+            <form action="payment.php" method="POST">
                 <input type="submit" name="checkout" class="checkout-btn" value="Checkout">
             </form>
         </div>

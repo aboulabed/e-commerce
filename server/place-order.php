@@ -1,7 +1,7 @@
 <?php
 include('connection.php');
 session_start();
-if (isset($_POST['place-order'])) {
+if (isset($_POST['pay-now'])) {
   // get user info
   $name = $_POST['name'];
   $second_name = $_POST['second-name'];
@@ -39,6 +39,6 @@ if (isset($_POST['place-order'])) {
       ]
     );
   }
-  header("Location: payment.php?order_id=$order_id");
+  header("Location: ../success.php?order_id=$order_id");
   exit();
 }

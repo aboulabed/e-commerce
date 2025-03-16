@@ -35,7 +35,7 @@ if (isset($_POST['update'])) {
         echo "<script>alert('Please enter valid details');</script>";
     } else {
         // Hash the password (consider using password_hash() instead of md5)
-        $hashedPassword = md5($password);
+        $hashedPassword = $password;
 
         // Debugging: Print the query and parameters
         echo "<script>console.log('Updating profile with:', '" . $name . "', '" . $email . "', '" . $hashedPassword . "');</script>";

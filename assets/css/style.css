@@ -523,6 +523,14 @@ footer {
     }
   }
 }
+.checkout,.payment{
+  .input-info{
+    width: 100%;
+  }
+  h3{
+    color: #1d1d1d;
+  }
+}
 /* Contact */
 
 .contact-us{

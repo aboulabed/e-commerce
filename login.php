@@ -23,14 +23,26 @@ if (isset($_POST['login'])) {
         $user = $result->fetch_assoc();
 
         // Verify the password (using md5 for now, but consider password_verify() for secure hashing)
-        if (md5($password) === $user['user_password']) {
+        if ($password === $user['user_password']) {
             // Set session variables
             $_SESSION['user_name'] = $user['user_name'];
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['user_email'] = $user['user_email'];
+            if($user['user_type'] == 'admin'){
+                $_SESSION['user_type'] = $user['user_type'];
 
+            }else{
+                $_SESSION['user_type'] = 'user';
+            }
+            switch ($_SESSION['user_type']) {
+                case 'admin':
+                    echo "<script>window.location.href='dashboard.php';</script>";
+                    break;
+                default:
+                    echo "<script>window.location.href='account.php';</script>";
+                    break;
+            }
             // Redirect to account page
-            echo "<script>window.location.href='account.php';</script>";
             exit(); // Stop further execution
         } else {
             echo "<script>alert('Incorrect password');</script>";

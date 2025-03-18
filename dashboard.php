@@ -39,10 +39,7 @@ $stmt6->close();
 ?>
 
 <?php include('layouts/header.php'); ?>
-<div class="sidebar border-end shadow">
-    <div class="logo mb-3">
-        <img src="assets/imgs/logo.png" class="logo" alt="">
-    </div>
+<?php include('layouts/sidebar.php'); ?>
 
     <ul class="list-unstyled ps-0">
 
@@ -142,6 +139,25 @@ $stmt6->close();
         justify-self: right;
         width: 85%;
 
+    }
+
+    .navbar {
+        width: 85%;
+        justify-self: right;
+        box-shadow: none !important;
+        max-height: 10vh;
+        position: sticky !important;
+
+        img,
+        h2 {
+            display: none;
+        }
+    }
+
+    .page-body {
+        justify-self: right;
+        width: 85%;
+
         .card {
             .card-body {
                 h5 {
@@ -153,10 +169,52 @@ $stmt6->close();
                     font-size: 30px;
                 }
 
+                .header {
+                    a {
+                        color: grey !important;
+                    }
+                }
+
                 span:last-of-type {
                     font-size: 15px;
                     margin-left: 0.5rem;
                     color: grey;
+                }
+            }
+        }
+
+        table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: separate;
+            border-spacing: 0 20px;
+            overflow: hidden;
+
+            thead {
+                background-color: #edf8fd;
+
+
+                th {
+                    font-weight: 600;
+                    padding: 10px;
+                    overflow: hidden;
+                }
+
+                th:first-of-type {
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px
+                }
+
+                th:last-of-type {
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px
+                }
+            }
+
+            tbody {
+                td {
+                    padding: 10px;
+                    color: #6e7070;
                 }
             }
         }

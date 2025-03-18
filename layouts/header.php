@@ -12,7 +12,7 @@
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-white  fixed-top shadow py-3">
+    <nav class="navbar navbar-expand-lg bg-white  fixed-top shadow py-4">
         <div class="container">
             <img src="assets/imgs/logo.png" class="logo" alt="">
             <h2>FASHION</h2>

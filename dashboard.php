@@ -36,21 +36,16 @@ $stmt6 = $conn->prepare("SELECT COUNT(*) FROM users WHERE date_added >= NOW() - 
 $stmt6->execute();
 $users_yesterday_count = $stmt6->get_result();
 $stmt6->close();
+// Get the orders
+$stmt7 = $conn->prepare("SELECT * FROM orders ORDER BY order_date DESC LIMIT 5;");
+$stmt7->execute();
+$orders = $stmt7->get_result();
+$stmt7->close();
 ?>
 
 <?php include('layouts/header.php'); ?>
 <?php include('layouts/sidebar.php'); ?>
 
-    <ul class="list-unstyled ps-0">
-
-        <li class="mb-1">
-            <i class="fas fa-th-large"></i>
-            <a href="dashboard.php" class="text-decoration-none">Dashboard</a>
-
-        </li>
-
-    </ul>
-</div>
 <div class="page-body">
     <div class="content m-5">
 
@@ -85,60 +80,48 @@ $stmt6->close();
             </div>
         </div>
 
+        <div class="row">
+            <div class="latest-orders card mt-4 mb-3 rounded-4 col-lg-12 col-md-12 col-sm-12">
+                <div class="card-body">
+                    <div class="header d-flex justify-content-between">
+
+                        <h5 class="card-title">Latest Orders</h5>
+                        <a href="#" class="text-decoration-none">View All</a>
+                    </div>
+                    <div class="table-responsive">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>User Address</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($order = $orders->fetch_assoc()) { ?>
+                                    <tr>
+                                        <td>#<?php echo $order['order_id']; ?></td>
+                                        <td><?php echo $order['user_address']; ?></td>
+                                        <td><?php echo $order['order_date']; ?></td>
+                                        <td><?php echo $order['order_status']; ?></td>
+                                        <td>$<?php echo $order['order_cost']; ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <?php include('layouts/footer.php'); ?>
 <style>
     body {
         background-color: #edf8fd;
-    }
-
-    .navbar {
-        width: 85%;
-        justify-self: right;
-        box-shadow: none !important;
-        height: 10vh;
-
-        img,
-        h2 {
-            display: none;
-        }
-    }
-
-    .sidebar {
-        width: 15%;
-        background-color: white;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-
-        div.logo {
-            width: 100%;
-            text-align: center;
-        }
-
-        ul {
-            margin-top: 1.5rem;
-
-            li {
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 18px;
-
-                a {
-                    margin-left: 10px;
-                }
-            }
-        }
-
-    }
-
-    .page-body {
-        justify-self: right;
-        width: 85%;
-
     }
 
     .navbar {

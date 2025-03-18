@@ -17,20 +17,25 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </li>
         <li class="mb-2 ms-2 <?php echo $currentPage === 'orders.php' ? 'active' : ''; ?>">
             <i class="fas fa-tasks"></i>
-            <a href="dashboard.php" class="text-decoration-none">Orders</a>
+            <a href="orders.php" class="text-decoration-none">Orders</a>
+
+        </li>
+        <li class="mb-2 ms-2 <?php echo $currentPage === 'products.php' ? 'active' : ''; ?>">
+            <i class="fas fa-tasks"></i>
+            <a href="products.php" class="text-decoration-none">Products</a>
 
         </li>
         <hr>
 
         <li class="mb-2 ms-2 <?php echo $currentPage === 'users.php' ? 'active' : ''; ?>">
             <i class="fas fa-users"></i>
-            <a href="dashboard.php" class="text-decoration-none">Manage Users</a>
+            <a href="users.php" class="text-decoration-none">Manage Users</a>
 
         </li>
         <hr>
         <li class="mb-2 ms-2 <?php echo $currentPage === 'logout.php' ? 'active' : ''; ?>">
             <i class="fas fa-sign-out-alt"></i>
-            <a href="dashboard.php" class="text-decoration-none">Logout</a>
+            <a href="logout.php" class="text-decoration-none">Logout</a>
 
         </li>
 

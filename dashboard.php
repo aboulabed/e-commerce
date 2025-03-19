@@ -1,11 +1,12 @@
-<?php session_start();
+<?php 
+include('server/connection.php');
+include('server/check_login.php');
 switch ($_SESSION['user_type']) {
     case 'user':
         echo "<script>window.location.href='../account.php';</script>";
         break;
 }
 
-include('server/connection.php');
 // Get the count of products
 $stmt1 = $conn->prepare("SELECT COUNT(*) FROM products");
 $stmt1->execute();

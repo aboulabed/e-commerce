@@ -1,4 +1,5 @@
 <?php 
+
 // Get the current page's filename
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
@@ -21,8 +22,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
         </li>
         <li class="mb-2 ms-2 <?php echo $currentPage === 'products.php' ? 'active' : ''; ?>">
-            <i class="fas fa-tasks"></i>
-            <a href="products.php" class="text-decoration-none">Products</a>
+        <i class="fas fa-shopping-bag"></i>
+        <a href="products.php" class="text-decoration-none">Products</a>
 
         </li>
         <hr>

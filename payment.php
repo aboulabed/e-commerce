@@ -20,7 +20,7 @@ if (isset($_POST['payment'])) {
         <div class="text-start col-lg-12 col-md-12 col-sm-12 pt-5 mt-3">
 
             <div class="">
-                <form action="server/place-order.php" method="POST">
+                <form action="server/place-order.php" method="post">
                     <div class="w-100 d-flex gap-3">
 
                         <div class="checkout  col-lg-6 col-md-12 col-sm-12">

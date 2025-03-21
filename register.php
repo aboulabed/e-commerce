@@ -59,7 +59,7 @@ if (isset($_POST['register'])) {
         <hr class="mx-auto">
     </div>
     <div class="container mx-auto">
-        <form id="register-form" action="register.php" method="POST">
+        <form id="register-form" action="register.php" method="post">
             <div class="mb-3 form-group">
                 <label for="Inputname1" class="form-label">Name</label>
                 <input name="name" type="text" class="form-control" id="Inputname1" placeholder="Enter your name"

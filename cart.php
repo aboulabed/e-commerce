@@ -113,7 +113,7 @@ $_SESSION['total_price'] = $sub_total + $tax;
                                 <div>
                                     <p><?php echo $product['product_name']; ?></p>
                                     <small><span>$</span><?php echo $product['product_price']; ?></small>
-                                    <form action="cart.php" method="POST">
+                                    <form action="cart.php" method="post">
                                         <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                         <input type="submit" name="remove_from_cart" class="remove-btn" value="Remove">
                                     </form>
@@ -122,7 +122,7 @@ $_SESSION['total_price'] = $sub_total + $tax;
                             </div>
                         </td>
                         <td>
-                            <form action="cart.php" method="POST">
+                            <form action="cart.php" method="post">
                                 <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                 <input type="number" name="product_quantity" value="<?php echo $product['product_quantity']; ?>" min="1">
                                 <input type="submit" name="edit_quantity" class="edit-btn" value="Edit">
@@ -155,7 +155,7 @@ $_SESSION['total_price'] = $sub_total + $tax;
             </table>
         </div>
         <div class="checkout-div">
-            <form action="payment.php" method="POST">
+            <form action="payment.php" method="post">
                 <input type="submit" name="checkout" class="checkout-btn" value="Checkout">
             </form>
         </div>

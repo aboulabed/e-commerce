@@ -48,6 +48,9 @@ h6 {
 img{
   width: 100%;
 }
+textarea{
+  resize: none;
+}
 hr {
   background-color: #fb774b;
   width: 30px;

@@ -87,7 +87,7 @@ $stmt7->close();
                     <div class="header d-flex justify-content-between">
 
                         <h5 class="card-title">Latest Orders</h5>
-                        <a href="#" class="text-decoration-none">View All</a>
+                        <a href="orders.php" class="text-decoration-none">View All</a>
                     </div>
                     <div class="table-responsive">
 
